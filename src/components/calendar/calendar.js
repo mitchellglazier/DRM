@@ -42,9 +42,9 @@ class Calendar extends Component {
                     selectable
                     localizer={localizer}
                     events={this.state.events}
-                    defaultView={BigCalendar.Views.WEEK}
+                    defaultView={BigCalendar.Views.MONTH}
                     scrollToTime={new Date(1970, 1, 1, 6)}
-                    defaultDate={new Date(2019, 3, 12)}
+                    defaultDate={new Date()}
                     onSelectEvent={event => alert(event.title)}
                     onSelectSlot={this.handleSelect}
                 />
