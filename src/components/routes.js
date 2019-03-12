@@ -6,7 +6,7 @@ import Messages from './messages';
 import Documents from './documents';
 import Help from './help';
 import Privacy from './privacyTerms';
-import Calendar from './calendar';
+import Calendar from './calendar/calendar';
 import Profile from './profile';
 
 const Routes = () => (
