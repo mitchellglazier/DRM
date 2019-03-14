@@ -16,7 +16,7 @@ class App extends Component {
                     <Link to="/messages">Messages</Link>
                     <Link to="/documents">Documents</Link>
                     <Link to="/calendar">Calendar</Link>
-                    <Link to="/profile">Profile</Link>
+                    {/* <Link to="/profile">Profile</Link> */}
                   </Navigation>
               </Header>
               <Drawer title="DRM">
@@ -25,6 +25,7 @@ class App extends Component {
                     <Link to="/messages">Messages</Link>
                     <Link to="/documents">Documents</Link>
                     <Link to="/calendar">Calendar</Link>
+                    <hr />
                     <Link to="/profile">Profile</Link>
                   </Navigation>
               </Drawer>
