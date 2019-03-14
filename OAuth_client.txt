@@ -1,7 +1,0 @@
-#OAuth Key
-298816864325-r5cd1co7ekptgr0eicuro9lbrfdjdnd0.apps.googleusercontent.com
-
-X7ZePKyPPN_voEf1_Xa4yHhx
-
-#API Key
-AIzaSyAkJrOFk_7YvvT35IHay5PW5BNRW9alAos
