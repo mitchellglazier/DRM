@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Expenses from './expenses/expenses';
 import Messages from './messages/messages';
-import Documents from './documents';
+import Documents from './documents/documents';
 import Help from './help';
 import Privacy from './privacyTerms';
 import Calendar from './calendar/calendar';
