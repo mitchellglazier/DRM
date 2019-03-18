@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-mdl';
 
 class Documents extends Component {
     constructor(props) {
@@ -39,7 +40,7 @@ class Documents extends Component {
                     </div>
                     <br />
                     <div>
-                        <button>Upload</button>
+                        <Button raised colored>Uploaded</Button>
                     </div>
                     <hr />
                     <p>Uploaded Documents:</p>
