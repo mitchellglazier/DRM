@@ -7,6 +7,8 @@ import 'react-mdl/extra/material.css';
 import 'react-mdl/extra/material.js';
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { BrowserRouter } from 'react-router-dom';
+import 'datatables.net-dt';
+
 
 ReactDOM.render(
     <BrowserRouter>

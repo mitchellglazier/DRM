@@ -40,7 +40,7 @@ class Expenses extends Component {
             expenses: newState
           });
         });
-      }
+    }
 
 
     handleChange(e) {
@@ -70,6 +70,11 @@ class Expenses extends Component {
             notResponsible: '',
         });
       }
+    
+      removeExpense(expenseId) {
+        const expenseRef = firebase.database().ref(`/expenses/${expenseId}`);
+        expenseRef.remove();
+      }
 
     toggleCategories() {
         if(this.state.activeTab === 0) {
@@ -77,35 +82,81 @@ class Expenses extends Component {
                 <div>
                     <h1>All Expenses</h1>
                     <div>
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" name="currentExpense" placeholder="What did you pay for?" onChange={this.handleChange} value={this.state.currentExpense} />
-                            <input type="text" name="place" placeholder="Where did you pay for it?" onChange={this.handleChange} value={this.state.place} />
-                            <input type="text" name="category" placeholder="Generally what is it for?" onChange={this.handleChange} value={this.state.category} />
-                            <input type="text" name="responsibility" placeholder="What is your percentage responsibility for the expense" onChange={this.handleChange} value={this.state.responsibility} />
-                            <input type="text" name="price" placeholder="How much did it cost?" onChange={this.handleChange} value={this.state.price} />
-                            <input type="text" name="notResponsible" placeholder="How much is not your responsibility" onChange={this.handleChange} value={this.state.notResponsible} />
-                            <button>Add Item</button>
+                        <form onSubmit={this.handleSubmit} className="form-inline" col={2}>
+                            <h3>Create a New Expense</h3>
+                            <div className="form-group" col={2}>
+                                <label for="currentExpense">Expense: </label>
+                                <input type="text" className="form-control" name="currentExpense" placeholder="What did you pay for?" onChange={this.handleChange} value={this.state.currentExpense} />
+                            </div>
+                            <br />
+                            <div className="form-group" col={2}>
+                                <label for="place">Place: </label>
+                                <input type="text" className="form-control" name="place" placeholder="Where did you pay for it?" onChange={this.handleChange} value={this.state.place} />
+                            </div>
+                            <br />
+                            <div className="form-group">
+                                <label for="category">Category: </label>
+                                <select class="form-control" type="select" name="category" onChange={this.handleChange} value={this.state.category}>
+                                    <option>Child Support</option>
+                                    <option>Phone</option>
+                                    <option>Clothing</option>
+                                    <option>School/School Activities</option>
+                                    <option>Other</option>
+                                </select>                            
+                            </div>
+                            <br />
+                            <div className="form-group">
+                                <label for="responsibility">My Responsibility: </label>
+                                <input type="text" className="form-control" name="responsibility" placeholder="What is your percentage responsibility for the expense" onChange={this.handleChange} value={this.state.responsibility} />
+                            </div>
+                            <br />
+                            <div className="form-group">
+                                <label for="price">Price: </label>
+                                <input type="text" className="form-control" name="price" placeholder="How much did it cost?" onChange={this.handleChange} value={this.state.price} />
+                            </div>
+                            <br />
+                            <div className="form-group">
+                                <label for="notResponsibile">Co-Parent Responsibility: </label>
+                                <input type="text" className="form-control" name="notResponsible" placeholder="How much is not your responsibility" onChange={this.handleChange} value={this.state.notResponsible} />
+                            </div>
+                            <br />
+                            <div>
+                                <button>Add Expense</button>
+                            </div>
                         </form>
                     </div>
                     <section className='display-item'>
-  <div className="wrapper">
-    <ul>
-      {this.state.expenses.map((expense) => {
-        return (
-          <li key={expense.id}>
-            <h3>{expense.currentExpense}</h3>
-            <p>Place: {expense.place}</p>
-            <p>Category: {expense.category}</p>
-            <p>My Responsibility: {expense.responsibility}</p>
-            <p>Price: {expense.price}</p>
-            <p>Co-Parent Responsibility: {expense.notResponsible}</p>
-          </li>
-        )
-      })}
-    </ul>
-  </div>
-</section>
-                </div>
+                        <div className="wrapper">
+                            <ul>
+                            {this.state.expenses.map((expense) => {
+                                return (
+                                    <table id="example" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Expense</th>
+                                                <th>Place</th>
+                                                <th>Category</th>
+                                                <th>My Responsibility</th>
+                                                <th>Price</th>
+                                                <th>Co-Parent Responsibility</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody key={expense.id}>
+                                            <td>{expense.currentExpense}</td>
+                                            <td>{expense.place}</td>
+                                            <td>{expense.category}</td>
+                                            <td>{expense.responsibility}</td>
+                                            <td>{expense.price}</td>
+                                            <td>{expense.notResponsible}</td>
+                                            <button onClick={() => this.removeExpense(expense.id)}>Delete Expense</button>
+                                        </tbody>
+                                    </table>
+                                )
+                            })}
+                            </ul>
+                        </div>
+                    </section>
+                    </div>
             )
         } else if(this.state.activeTab === 1) {
                 return (

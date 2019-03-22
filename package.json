@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "axios": "^0.18.0",
+    "bootstrap": "^3.4.1",
+    "datatables.net-dt": "^1.10.19",
     "firebase": "^5.9.0",
     "moment": "^2.24.0",
     "react": "^16.8.4",
